@@ -1,7 +1,5 @@
 import dbConnect from "@/lib/dcConnect";
 import UserModel from "@/model/User";
-import { z } from "zod";
-import { usernameValidation } from "@/schemas/signUpSchema";
 
 export async function POST(request: Request) {
   await dbConnect();
@@ -17,7 +15,7 @@ export async function POST(request: Request) {
       return Response.json(
         {
           success: false,
-          message: "user naot found",
+          message: "user not found",
         },
         { status: 500 }
       );
@@ -33,7 +31,7 @@ export async function POST(request: Request) {
       return Response.json(
         {
           success: true,
-          message: "Acoount Verified Successfully",
+          message: "Account Verified Successfully",
         },
         { status: 200 }
       );

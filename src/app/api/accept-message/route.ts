@@ -68,6 +68,7 @@ export async function GET(request: Request) {
   await dbConnect();
 
   const session = await getServerSession(authOptions);
+  console.log(session);
 
   const user: User = session?.user as User;
 

@@ -25,7 +25,7 @@ export async function POST(req: Request) {
     if (response.ok) {
       // Return the generated response
       return NextResponse.json(
-        responseData.candidates[0].content.parts[0].text.split("||")
+        responseData.candidates[0].content.parts[0].text
       ); //responseData.candidates[0].content.parts[0].text
     } else {
       // Handle API errors

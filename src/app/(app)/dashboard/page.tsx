@@ -61,7 +61,7 @@ const Page = () => {
             const response = await axios.get<ApiResponse>('/api/get-messages')
 
             setMessages(response.data.messages || [])
-            console.log(messages)
+            console.log(response.data.messages)
 
             toast({
                 title: 'Refreshed Messages',
@@ -109,7 +109,7 @@ const Page = () => {
     const { toast } = useToast()
 
     if (!session || !session.user) {
-        return <div>Please Login In</div>
+        return <div className="flex justify-center items-center h-96"> <h4 className="text-3xl"><Loader2 className="h-32 w-32 animate-spin" /></h4></div>
     }
 
     const { username } = session.user as User

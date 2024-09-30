@@ -38,7 +38,7 @@ const Page = () => {
     const fetchAcceptMessage = useCallback(async () => {
         setIsSwitchloading(true)
         try {
-            const response = await axios.get<ApiResponse>('/api/accept-message')
+            const response = await axios.get<ApiResponse>(`/api/accept-message?username=${username}`)
             setValue('acceptMessages', response.data.isAcceptingMessages)
         } catch (error) {
             const axiosError = error as AxiosError<ApiResponse>
@@ -61,7 +61,6 @@ const Page = () => {
             const response = await axios.get<ApiResponse>('/api/get-messages')
 
             setMessages(response.data.messages || [])
-            console.log(response.data.messages)
 
             toast({
                 title: 'Refreshed Messages',
@@ -90,6 +89,7 @@ const Page = () => {
     }, [session, setValue, fetchAcceptMessage, fetchMessages])
 
     const handleSwitchChange = async () => {
+        console.log(acceptMessages)
         try {
             const response = await axios.post<ApiResponse>('/api/accept-message', { acceptMessages: !acceptMessages })
             setValue('acceptMessages', !acceptMessages)

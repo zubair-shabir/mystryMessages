@@ -1,4 +1,4 @@
-import dbConnect from "@/lib/dcConnect";
+import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/model/User";
 import bcrypt from "bcryptjs";
 
@@ -68,7 +68,6 @@ export async function POST(request: Request) {
       username,
       verifyCode
     );
-    console.log(emailResponse);
 
     if (!emailResponse.success) {
       return Response.json(

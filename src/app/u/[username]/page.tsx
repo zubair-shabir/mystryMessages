@@ -81,9 +81,9 @@ export default function SendMessage() {
   };
   const fetchUserAcceptingMessages = async () => {
     try {
-      const response = await axios.get<ApiResponse>("/api/accept-message");
-      console.log(response.data.isAcceptingMessages);
-      setAcceptingMessages(response.data.isAcceptingMessages ?? false);
+      const response = await axios.get<ApiResponse>(`/api/accept-message?username=${username}`);
+      setAcceptingMessages(response.data.isAcceptingMessages as boolean);
+
     } catch (error) {
       console.log("error", error);
     } finally {

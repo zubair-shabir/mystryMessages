@@ -1,4 +1,4 @@
-import dbConnect from "@/lib/dcConnect";
+import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/model/User";
 
 export async function POST(request: Request) {

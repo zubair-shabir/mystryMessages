@@ -29,7 +29,6 @@ export async function POST(req: Request) {
       ); //responseData.candidates[0].content.parts[0].text
     } else {
       // Handle API errors
-      console.log(responseData);
       return NextResponse.json(
         { error: responseData.message || "Failed to generate text" },
         { status: response.status }

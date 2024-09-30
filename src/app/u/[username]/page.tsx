@@ -83,7 +83,7 @@ export default function SendMessage() {
     try {
       const response = await axios.get<ApiResponse>("/api/accept-message");
       console.log(response.data.isAcceptingMessages);
-      setAcceptingMessages(response.data.isAcceptingMessages);
+      setAcceptingMessages(response.data.isAcceptingMessages ?? false);
     } catch (error) {
       console.log("error", error);
     } finally {

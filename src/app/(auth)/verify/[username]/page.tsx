@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { useParams, useRouter } from 'next/navigation'
 import React from 'react'
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { verifySchema } from '@/schemas/verifySchema'
 import axios, { AxiosError } from 'axios'
 import { ApiResponse } from '@/types/ApiResponse'
@@ -21,8 +21,8 @@ const VerifyAccount = () => {
     const form = useForm({
         resolver: zodResolver(verifySchema),
     })
-
-    const onSubmit = async (data: z.infer<typeof verifySchema>) => {
+    //eslint-disable-next-line
+    const onSubmit: SubmitHandler<any> = async (data: z.infer<typeof verifySchema>) => {
         try {
             const response = await axios.post('/api/verify-code', {
                 username: param.username,
@@ -56,6 +56,7 @@ const VerifyAccount = () => {
                     <p className="mb-4">Enter the verification code sent to your email</p>
                 </div>
                 <Form {...form}>
+
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                         <FormField
                             name="code"

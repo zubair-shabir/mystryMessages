@@ -30,11 +30,11 @@
     "mongoose": "^8.6.3",
     "next": "14.2.13",
     "next-auth": "^4.24.7",
+    "node-mailjet": "^6.0.6",
     "openai": "^4.63.0",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.53.0",
-    "resend": "^4.0.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
     "usehooks-ts": "^3.1.0",
@@ -48,7 +48,6 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.13",
     "postcss": "^8",
-    "react-email": "3.0.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

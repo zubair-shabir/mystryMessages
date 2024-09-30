@@ -68,12 +68,14 @@ export async function POST(request: Request) {
       username,
       verifyCode
     );
+    console.log(emailResponse);
 
     if (!emailResponse.success) {
       return Response.json(
         {
           success: false,
           message: emailResponse.message,
+          body: emailResponse.body,
         },
         { status: 500 }
       );

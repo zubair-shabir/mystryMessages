@@ -1,12 +1,5 @@
-import mailjet from "node-mailjet";
+import { mailjetClient } from "@/lib/mailjet";
 import VerificationEmail from "../../emails/VerficationEmail";
-import { ApiResponse } from "@/types/ApiResponse";
-
-// Initialize the Mailjet client
-const mailjetClient = new mailjet({
-  apiKey: process.env.MJ_APIKEY_PUBLIC!,
-  apiSecret: process.env.MJ_APIKEY_PRIVATE!,
-});
 
 export async function sendVerificationEmail(
   email: string,

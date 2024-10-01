@@ -11,7 +11,7 @@ export async function POST(request: Request) {
   await dbConnect();
 
   const session = await getServerSession(authOptions);
-  const user: User = session?.user;
+  const user: User = session?.user as User;
   if (!session || !session.user) {
     return Response.json(
       { success: false, message: "Not authenticated" },
@@ -102,47 +102,6 @@ export async function GET(request: Request) {
       {
         success: true,
         isAcceptingMessages: user?.isAcceptingMessage,
-      },
-      { status: 200 }
-    );
-  } catch (error) {
-    console.error("Error retrieving message acceptance status:", error);
-    return Response.json(
-      { success: false, message: "Error retrieving message acceptance status" },
-      { status: 500 }
-    );
-  }
-
-  return;
-  // Get the user session
-  const session = await getServerSession(authOptions);
-  const user = session?.user;
-
-  // Check if the user is authenticated
-  if (!session || !user) {
-    return Response.json(
-      { success: false, message: "Not authenticated" },
-      { status: 401 }
-    );
-  }
-
-  try {
-    // Retrieve the user from the database using the ID
-    const foundUser = await UserModel.findById(user._id);
-
-    if (!foundUser) {
-      // User not found
-      return Response.json(
-        { success: false, message: "User not found" },
-        { status: 404 }
-      );
-    }
-
-    // Return the user's message acceptance status
-    return Response.json(
-      {
-        success: true,
-        isAcceptingMessages: foundUser.isAcceptingMessages,
       },
       { status: 200 }
     );
